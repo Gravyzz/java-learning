@@ -9,14 +9,11 @@ public class DVD extends LibraryItem implements Borrowable {
         this.durationMinutes = durationMinutes;
     }
 
+
+    @Override
     public  String getItemType(){
         return "ДВД";
-    };
-
-    public void borrow(User user){user.getList().add(this);};
-    public void returnItem(){list.add(this);};
-    public boolean isAvailable(){};
-    public User getCurrentBorrower(){};
+    }
 
 
     @Override

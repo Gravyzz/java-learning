@@ -1,7 +1,6 @@
 package Library_Project;
 
-public class Book extends LibraryItem implements  Borrowable {
-
+public class Book extends LibraryItem {
     private String author;
     private int pages;
 
@@ -11,19 +10,13 @@ public class Book extends LibraryItem implements  Borrowable {
         this.pages = pages;
     }
 
+    @Override
     public String getItemType(){
         return "Книга";
-    };
-
-    public void borrow(User user){
-        user.getList().add(this);
-    };
-    public void returnItem(){};
-    public boolean isAvailable(){};
-    public User getCurrentBorrower(){};
+    }
 
     @Override
     public String toString(){
-        return super.toString() + " Автор: " + author + ", количество страниц: " + pages;
+        return super.toString() + ", Автор: " + author + ", количество страниц: " + pages;
     }
 }

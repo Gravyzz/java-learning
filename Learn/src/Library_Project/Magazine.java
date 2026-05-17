@@ -8,14 +8,11 @@ public class Magazine extends LibraryItem implements Borrowable {
         this.issueNumber = issueNumber;
     }
 
+
+    @Override
     public  String getItemType(){
         return "Журнал";
     };
-
-    public void borrow(User user){user.getList().add(this);};
-    public void returnItem(){};
-    public boolean isAvailable(){};
-    public User getCurrentBorrower(){};
 
 
     @Override

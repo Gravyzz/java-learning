@@ -4,26 +4,29 @@ import java.util.*;
 public class User {
     private int id;
     private String name;
-    private List<LibraryItem> list;
+    private List<LibraryItem> borrowedItems;
 
     public User(int id, String name){
         this.id = id;
         this.name = name;
-        list = new ArrayList<>();
+        this.borrowedItems = new ArrayList<>();
+
+    }
+
+    public void addBorrowedItem(LibraryItem item) {
+        borrowedItems.add(item);
+    }
+
+    public void removeBorrowedItem(LibraryItem item) {
+        borrowedItems.remove(item);
     }
 
 
-    public String getName() {
-        return name;
-    }
+    public String getName() {return name;}
 
-    public int getId() {
-        return id;
-    }
+    public int getId() {return id;}
 
-    public List<LibraryItem> getList() {
-        return list;
-    }
+    public List<LibraryItem> getBorrowedItems() {return borrowedItems;}
 
     @Override
     public String toString() {
