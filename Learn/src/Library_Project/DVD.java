@@ -1,6 +1,6 @@
 package Library_Project;
 
-public class DVD extends LibraryItem implements Borrowable {
+public class DVD extends LibraryItem  {
 
     private int durationMinutes;
 

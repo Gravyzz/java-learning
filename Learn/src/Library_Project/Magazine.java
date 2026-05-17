@@ -1,6 +1,6 @@
 package Library_Project;
 
-public class Magazine extends LibraryItem implements Borrowable {
+public class Magazine extends LibraryItem {
     private int issueNumber;
 
     public Magazine(int id, String title, int year, int issueNumber){
