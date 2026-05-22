@@ -1,30 +1,36 @@
 import Library_Project.*;
+import StaticDemo.Calculator;
 import StaticDemo.Counter;
+import StaticDemo.DivisionByZeroException;
 import StaticDemo.Status;
+
+import java.io.FileReader;
+import java.util.InputMismatchException;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
 
-        Counter o1 = new Counter();
-        Counter o2 = new Counter();
-        Counter o3 = new Counter();
 
-        System.out.println(Counter.count);
-        Status currentStatus = Status.ACTIVE;
-        if (currentStatus == Status.ACTIVE){
-            System.out.println("Активен");
+        try(Scanner sc = new Scanner(System.in)){
+            double a = sc.nextDouble();
+            double b = sc.nextDouble();
+
+            try{
+            System.out.println(Calculator.divide(a,b));
+
+            } catch (DivisionByZeroException e){
+                System.out.println("Деление на 0");
+
         }
 
-        currentStatus = Status.BLOCKED;
-        switch (currentStatus) {
-            case ACTIVE:
-                System.out.println("Активный");
-                break;
-            case INACTIVE: System.out.println("Не активный");
-            break;
-            case BLOCKED: System.out.println("Заблокирован");
-            break;
+
+        } catch(InputMismatchException e) {
+            System.out.println("Введено не число!");
+        } finally {
+            System.out.println("Программа завершена!");
         }
 
     }
+
 }

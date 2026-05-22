@@ -1,7 +1,7 @@
 package StaticDemo;
 
 public class Counter {
-    public static int count;
+    private static  int count;
     public static final int MAX_COUNT = 5;
 
     public Counter() {
