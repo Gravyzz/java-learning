@@ -1,25 +1,30 @@
 import Library_Project.*;
+import StaticDemo.Counter;
+import StaticDemo.Status;
 
 public class Main {
     public static void main(String[] args) {
-        Library library = new Library();
-        Book bookOfDostoevsky = new Book(0,"Crime and nakazanie", 1850, "Dostoevsky", 195);
-        Book bookOfTolstoq = new Book(1,"Non", 1846, "Tolstoi", 246);
-        DVD dvd1 = new DVD(3, "Star wars", 1998,130);
-        Magazine mag1 = new Magazine(4, "Playboy",2007, 65);
-        library.addItem(bookOfDostoevsky);
-        library.addItem(bookOfTolstoq);
-        library.addItem(dvd1);
-        library.addItem(mag1);
 
-        User user1 = new User(0 , "Thomas");
-        User user2 = new User(1, "Michel");
+        Counter o1 = new Counter();
+        Counter o2 = new Counter();
+        Counter o3 = new Counter();
 
-        library.registerUser(user1);
-        library.registerUser(user2);
+        System.out.println(Counter.count);
+        Status currentStatus = Status.ACTIVE;
+        if (currentStatus == Status.ACTIVE){
+            System.out.println("Активен");
+        }
 
-        library.printAllItems();
-        
+        currentStatus = Status.BLOCKED;
+        switch (currentStatus) {
+            case ACTIVE:
+                System.out.println("Активный");
+                break;
+            case INACTIVE: System.out.println("Не активный");
+            break;
+            case BLOCKED: System.out.println("Заблокирован");
+            break;
+        }
 
     }
 }
