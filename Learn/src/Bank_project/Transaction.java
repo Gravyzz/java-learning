@@ -1,4 +1,4 @@
-package Bank;
+package Bank_project;
 
 public class Transaction {
     private final int accountId;

@@ -1,4 +1,4 @@
-package Bank.Account;
+package Bank_project.Account;
 
 public class DebitAccount extends  Account{
 

@@ -1,7 +1,7 @@
-package Bank.Account;
+package Bank_project.Account;
 
-import Bank.Exception.CreditLimitExceededException;
-import Bank.Exception.InvalidAmountException;
+import Bank_project.Exception.CreditLimitExceededException;
+import Bank_project.Exception.InvalidAmountException;
 
 public class CreditAccount extends Account{
 

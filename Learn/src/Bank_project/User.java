@@ -1,6 +1,6 @@
-package Bank;
+package Bank_project;
 
-import Bank.Account.Account;
+import Bank_project.Account.Account;
 
 import java.util.*;
 

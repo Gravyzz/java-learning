@@ -1,4 +1,4 @@
-package Bank.Exception;
+package Bank_project.Exception;
 
 public class InsufficientFundsException extends RuntimeException {
 

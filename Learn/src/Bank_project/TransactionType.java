@@ -1,9 +1,9 @@
-package Bank;
+package Bank_project;
 
 public enum TransactionType {
     DEPOSIT("Пополнение"),
     WITHDRAW("Снятие"),
-    INTEREST("Начисленеи процентов");
+    INTEREST("Начисление процентов");
 
     private final String description;
 

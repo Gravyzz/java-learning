@@ -1,12 +1,12 @@
-package Bank;
+package Bank_project;
 
-import Bank.Account.Account;
-import Bank.Account.CreditAccount;
-import Bank.Account.DebitAccount;
-import Bank.Account.SavingsAccount;
-import Bank.Exception.CreditLimitExceededException;
-import Bank.Exception.InsufficientFundsException;
-import Bank.Exception.InvalidAmountException;
+import Bank_project.Account.Account;
+import Bank_project.Account.CreditAccount;
+import Bank_project.Account.DebitAccount;
+import Bank_project.Account.SavingsAccount;
+import Bank_project.Exception.CreditLimitExceededException;
+import Bank_project.Exception.InsufficientFundsException;
+import Bank_project.Exception.InvalidAmountException;
 
 public class Main {
     public static void main(String[] args) {
@@ -124,5 +124,43 @@ public class Main {
         System.out.println("\nИмя enum: " + t1.getType().name());
         System.out.println("Описание: " + t1.getType().getDescription());
 
+
+        System.out.println("\n=== БЛОК 11: Главный тест банка ===");
+        Bank tinkoff = new Bank("Тинькофф");
+
+        User petya = new User(1, "Петя");
+        User vasya = new User(2, "Вася");
+
+        tinkoff.registerUser(petya);
+        tinkoff.registerUser(vasya);
+
+        DebitAccount petyaDebit = new DebitAccount(1001, "Петя");
+        SavingsAccount petyaSavings = new SavingsAccount(1002, "Петя", 5.0);
+        CreditAccount vasyaCredit = new CreditAccount(2001, "Вася", 10000);
+
+        tinkoff.openAccount(petya, petyaDebit);
+        tinkoff.openAccount(petya, petyaSavings);
+        tinkoff.openAccount(vasya, vasyaCredit);
+
+// Операции через банк
+        tinkoff.deposit(petyaDebit, 5000);
+        tinkoff.withdraw(petyaDebit, 1000);
+        tinkoff.deposit(petyaSavings, 10000);
+        tinkoff.applyInterest(petyaSavings);
+        tinkoff.deposit(vasyaCredit, 2000);
+        tinkoff.withdraw(vasyaCredit, 5000);   // уйдёт в минус, кредитный пустит
+
+// Попытка снять больше, чем есть на дебетовом — упадёт, в историю не запишется
+        try {
+            tinkoff.withdraw(petyaDebit, 100000);
+        } catch (RuntimeException e) {
+            System.out.println("⚠️ Не удалось: " + e.getMessage());
+        }
+
+        tinkoff.printAllAccounts();
+        System.out.println();
+        tinkoff.printUserAccounts(petya);
+        System.out.println();
+        tinkoff.printTransactionHistory();
     }
 }

@@ -1,7 +1,7 @@
-package Bank.Account;
+package Bank_project.Account;
 
-import Bank.Exception.InsufficientFundsException;
-import Bank.Exception.InvalidAmountException;
+import Bank_project.Exception.InsufficientFundsException;
+import Bank_project.Exception.InvalidAmountException;
 
 import java.util.Objects;
 
