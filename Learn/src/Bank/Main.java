@@ -100,5 +100,29 @@ public class Main {
         // Ожидаем: 3 (debit, credit, savings)
         System.out.println("Лимит счетов: " + Account.MAX_ACCOUNTS);
         // Ожидаем: 1000
+
+
+        System.out.println("\n=== БЛОК 9: User и его счета ===");
+        User ivan = new User(100, "Ivan");
+        ivan.addAccount(debit);
+        ivan.addAccount(credit);
+        ivan.addAccount(savings);
+
+        System.out.println(ivan);
+        System.out.println("Общий баланс: " + ivan.getTotalBalance());
+
+        System.out.println("\n=== БЛОК 10: Тест Transaction и TransactionType ===");
+        Transaction t1 = new Transaction(1, TransactionType.DEPOSIT, 1000);
+        Transaction t2 = new Transaction(1, TransactionType.WITHDRAW, 300);
+        Transaction t3 = new Transaction(20, TransactionType.INTEREST, 100);
+
+        System.out.println(t1);
+        System.out.println(t2);
+        System.out.println(t3);
+
+// Демонстрация что у enum есть оба представления
+        System.out.println("\nИмя enum: " + t1.getType().name());
+        System.out.println("Описание: " + t1.getType().getDescription());
+
     }
 }
