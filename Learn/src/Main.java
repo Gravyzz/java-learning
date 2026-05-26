@@ -5,32 +5,18 @@ import StaticDemo.DivisionByZeroException;
 import StaticDemo.Status;
 
 import java.io.FileReader;
-import java.util.InputMismatchException;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
 
+        HashMap<String, ArrayList<String>> autors = new HashMap<>();
 
-        try(Scanner sc = new Scanner(System.in)){
-            double a = sc.nextDouble();
-            double b = sc.nextDouble();
-
-            try{
-            System.out.println(Calculator.divide(a,b));
-
-            } catch (DivisionByZeroException e){
-                System.out.println("Деление на 0");
-
-        }
-
-
-        } catch(InputMismatchException e) {
-            System.out.println("Введено не число!");
-        } finally {
-            System.out.println("Программа завершена!");
-        }
-
+        ArrayList<String> proiz = new ArrayList<>();
+        proiz.add("Bella");
+        proiz.add("Love");
+        autors.put("Michel", proiz);
+        System.out.println(autors);
     }
 
 }

@@ -8,16 +8,11 @@ public class DebitAccount extends  Account{
 
     @Override
     public String getAccountType(){
-        return "дебетовый";
+        return "Дебетовый";
     }
 
     @Override
-    public void withdraw(double amount){
-        if (amount > this.balance){
-            System.out.println("Недостаточно средств на счёте #"+id);
-        } else{
-            balance-=amount;
-        }
-
+    public void withdraw(double amount) {
+        withdrawWithoutOverdraft(amount);
     }
 }

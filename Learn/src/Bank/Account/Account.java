@@ -1,17 +1,23 @@
 package Bank.Account;
 
+import Bank.Exception.InsufficientFundsException;
+import Bank.Exception.InvalidAmountException;
+
 import java.util.Objects;
 
 public abstract class Account {
-    
+
+    public static final int MAX_ACCOUNTS = 1000;
     protected int id;
     protected double balance;
     protected String ownerName;
-    
+    private static int totalAccountsCreated;
+
     public Account(int id, String ownerName){
         this.id = id;
         this.ownerName = ownerName;
         this.balance = 0;
+        totalAccountsCreated++;
     }
 
     public int getId() {
@@ -27,12 +33,26 @@ public abstract class Account {
     }
 
     public void deposit(double amount){
+        if (amount <=0){
+            throw new InvalidAmountException("Сумма должна быть положительной: " + amount);
+        }
         this.balance +=amount;
     }
 
-    abstract void withdraw(double amount);
+    public abstract void withdraw(double amount);
 
-    abstract String getAccountType();
+    public abstract String getAccountType();
+
+    protected void withdrawWithoutOverdraft(double amount) {
+        if (amount <= 0){ throw new InvalidAmountException("Сумма должна быть положительной:" + amount);}
+        if (amount > balance){ throw new InsufficientFundsException(id, amount, balance);
+        } else {balance-=amount;}
+    }
+
+
+    public static int getTotalAccountsCreated() {
+        return totalAccountsCreated;
+    }
 
     @Override
     public String toString(){
