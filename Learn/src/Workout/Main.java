@@ -32,7 +32,4 @@ public static boolean isBalanced(String input){
     if (chars.isEmpty()) return true;
     return false;
 }
-
-
-
 }
