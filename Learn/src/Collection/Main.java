@@ -4,21 +4,7 @@ import java.util.*;
 public class Main {
     public static void main(String[] args) {
 
-// removeShortWords
-        List<String> allShort = new ArrayList<>(List.of("a", "go", "hi"));
-        removeShortWords(allShort, 3);
-        System.out.println(allShort);   // [] все удалены
-
-        List<String> noShort = new ArrayList<>(List.of("code", "java"));
-        removeShortWords(noShort, 3);
-        System.out.println(noShort);    // [code, java] без изменений
-
-// removeNegatives
-        List<Integer> allNeg = new ArrayList<>(List.of(-1, -2, -3));
-        System.out.println(removeNegatives(allNeg) + " " + allNeg);  // 3 []
-
-        List<Integer> noNeg = new ArrayList<>(List.of(1, 2, 3));
-        System.out.println(removeNegatives(noNeg) + " " + noNeg);    // 0 [1, 2, 3]
+        System.out.println(91880105%16);
 
     }
 
