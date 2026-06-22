@@ -1,29 +1,43 @@
 package lambdasAndStreamAPI;
 
+import java.util.*;
+import java.util.stream.Collectors;
+
 public class Main {
     public static void main(String[] args) {
 
+        List<String> names = List.of("Иван", "Александр", "Ян", "Мария", "Лев");
+        List<String> empty = List.of();
 
-        String r1 = applyTransform("hello", s -> s.toUpperCase());
-        System.out.println(r1);
+        System.out.println(longNamesUpper(names));
+        System.out.println(countShort(names));
+        System.out.println(nameLengths(names));
 
-
-        String r2 = applyTransform("java", s -> new StringBuilder(s).reverse().toString());
-        System.out.println(r2);
-
-
-        String r3 = applyTransform("ab", s -> s + s);
-        System.out.println(r3);
-
-
-        String r4 = applyTransform("length", s -> String.valueOf(s.length()));
-        System.out.println(r4);
-
-
+        System.out.println(longNamesUpper(empty));
+        System.out.println(countShort(empty));
+        System.out.println(nameLengths(empty));
 
     }
-    public static String applyTransform(String input, StringTransformer transformer){
-        return transformer.transform(input);
+
+    public static List<String> longNamesUpper(List<String> names) {
+        return names.stream()
+                .filter(n -> n.length()>4)
+                .map(n -> n.toUpperCase())
+                .collect(Collectors.toList());
+    }
+
+
+    public static long countShort(List<String> names){
+        return names.stream()
+                .filter(n -> n.length()<=4)
+                .count();
+    }
+
+
+    public static List<Integer> nameLengths(List<String> names){
+        return names.stream()
+                .map(n -> n.length())
+                .collect(Collectors.toList());
     }
 
 }
