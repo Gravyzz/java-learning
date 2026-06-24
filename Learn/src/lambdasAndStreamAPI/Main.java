@@ -6,38 +6,49 @@ import java.util.stream.Collectors;
 public class Main {
     public static void main(String[] args) {
 
-        List<String> names = List.of("Иван", "Александр", "Ян", "Мария", "Лев");
-        List<String> empty = List.of();
+        List<Integer> nums = List.of(3, -2, 4, 1, -5, 6);
+        List<Integer> empty = List.of();
 
-        System.out.println(longNamesUpper(names));
-        System.out.println(countShort(names));
-        System.out.println(nameLengths(names));
+        System.out.println(evensDoubled(nums));
+        System.out.println(evensDoubled(empty));
 
-        System.out.println(longNamesUpper(empty));
-        System.out.println(countShort(empty));
-        System.out.println(nameLengths(empty));
+        System.out.println(sumOfPositives(nums));
+        System.out.println(sumOfPositives(empty));
+
+        System.out.println(hasNegative(nums));
+        System.out.println(hasNegative(empty));
+
+        System.out.println(joinSorted(nums));
+        System.out.println(joinSorted(empty));
 
     }
 
-    public static List<String> longNamesUpper(List<String> names) {
-        return names.stream()
-                .filter(n -> n.length()>4)
-                .map(n -> n.toUpperCase())
+    public static List<Integer> evensDoubled(List<Integer> nums){
+        return nums.stream()
+                .filter(n -> n>0)
+                .filter(n -> n%2==0)
+                .map(n -> n*2)
                 .collect(Collectors.toList());
     }
 
+    public static int sumOfPositives(List<Integer> nums){
+        return nums.stream()
+                .filter(n -> n=0)
+                .mapToInt(n -> n)
+                .sum();
 
-    public static long countShort(List<String> names){
-        return names.stream()
-                .filter(n -> n.length()<=4)
-                .count();
     }
 
+    public static boolean hasNegative(List<Integer> nums){
+        return nums.stream()
+                .anyMatch(n -> n<0);
+    }
 
-    public static List<Integer> nameLengths(List<String> names){
-        return names.stream()
-                .map(n -> n.length())
-                .collect(Collectors.toList());
+    public static String joinSorted(List<Integer> nums){
+        return nums.stream()
+                .sorted()
+                .map(n -> String.valueOf(n))
+                .collect(Collectors.joining(", "));
     }
 
 }
