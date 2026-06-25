@@ -33,7 +33,7 @@ public class Main {
 
     public static int sumOfPositives(List<Integer> nums){
         return nums.stream()
-                .filter(n -> n=0)
+                .filter(n -> n>=0)
                 .mapToInt(n -> n)
                 .sum();
 
