@@ -15,8 +15,6 @@ public class Main {
     Thread t2 = new Thread(task);
     t1.start();
     t2.start();
-
-
-
+    
 
     }}
