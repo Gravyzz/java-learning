@@ -1,9 +1,12 @@
+import Repetition.Student;
+
 import java.util.*;
 
 
 public class Main{
     public static void main() {
-        System.out.println("I am return!");
+       Student student = new Student("Alex", 19, 4.6);
+        student.printInfo();
 
     }
 }
