@@ -4,17 +4,19 @@ public class Main {
 
     public static void main(String[] args) {
 
-        String text = "   Java Backend   ";
-        text = normalize(text);
+        boolean yes = isAdmin("admiN");
+        System.out.println(yes);
 
-        System.out.println(text);
 
     }
 
-    static String normalize(String text){
-        text = text.trim();
-        text = text.toLowerCase();
-        return text;
+    static boolean isAdmin(String login){
+        if (login == null){
+            return false;
+        }
+        login = login.trim();
+        return login.equalsIgnoreCase("admin");
+
     }
 
 }
