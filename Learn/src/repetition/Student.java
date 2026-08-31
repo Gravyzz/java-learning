@@ -1,4 +1,4 @@
-package Repetition;
+package repetition;
 
 public class Student {
     private String name;
