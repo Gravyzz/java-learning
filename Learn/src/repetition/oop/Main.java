@@ -1,22 +1,25 @@
 package repetition.oop;
 
+import repetition.oop.notification.ConsoleNotificationSender;
+import repetition.oop.notification.EmailNotificationSender;
+import repetition.oop.notification.NotificationService;
+
 public class Main {
     public static void main(String[] args) {
 
-        System.out.println(describe(10) );
-        System.out.println(describe("java") );
-        System.out.println(describe(10,20) );
+        BankAccount first = new BankAccount(100);
+        BankAccount second = first;
+
+        first.deposit(50);
+        System.out.println(second.getBalance());
+
+        first = new BankAccount(10);
+        System.out.println(first.getBalance());
+        System.out.println(second.getBalance());
+
+
 
     }
 
-    static String describe(int value){
-        return "number: " + value;
-    }
-    static String describe(String value){
-        return "text: " + value;
-    }
-    static String describe(int first, int second){
-        return "sum: " + (first+second);
-    }
 
 }
