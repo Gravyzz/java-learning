@@ -4,30 +4,27 @@ import java.util.*;
 
 public class Main {
         public static void main(String[] args){
+            Map<String, Integer> check =
+                    countWords(List.of("java", new String("java"), "Java"));
 
-            List<Integer> numbers =
-                    new ArrayList<>(List.of(-1, -2, -3, 4));
+            System.out.println(check.get("java"));
+            System.out.println(check.get("Java"));
+            System.out.println(check.size());
+            System.out.println(countWords(List.of()).size());
 
-            for (int i = 0; i < numbers.size(); i++) {
-                if (numbers.get(i) < 0) {
-                    numbers.remove(i);
-                }
-            }
-
-            System.out.println(numbers);
 
         }
 
-    static void removeNegative(List<Integer> numbers){
-        Iterator<Integer> iterator = numbers.iterator();
+    static Map<String, Integer> countWords(List<String> words){
+            Map<String, Integer> wordsMap = new HashMap<>();
 
-        while (iterator.hasNext()) {
-            int number = iterator.next();
-
-            if (number < 0) {
-                iterator.remove();
-            }
+            for (int i = 0; i < words.size(); i++) {
+                String word = words.get(i);
+                if (wordsMap.containsKey(word)){
+                    wordsMap.put(word,wordsMap.get(word)+1);
+                } else wordsMap.put(word, 1);
         }
+            return wordsMap;
     }
 
 }
