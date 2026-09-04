@@ -11,11 +11,24 @@ public class Main {
             return text.trim();
         };
 
-        System.out.println("before");
 
         String result = formatter.format(" Java ");
-
         System.out.println(result);
 
+        TextFormatter upper = text -> text.trim().toUpperCase(Locale.ROOT);
+        TextFormatter brackets = text -> {
+                return  "[" + text + "]";
+        };
+
+        System.out.println(applyFormatter("  java  ", upper));
+        System.out.println(applyFormatter("java", brackets));
+
+    }
+
+    static String applyFormatter(
+            String text,
+            TextFormatter formatter
+    ){
+        return formatter.format(text);
     }
 }
