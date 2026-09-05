@@ -1,25 +1,23 @@
 package repetition.functional;
 
+import java.util.List;
 import java.util.Locale;
 import java.util.function.*;
 
 public class Main {
     public static void main(String[] args) {
 
-        Predicate<String> validLogin = login -> (login != null) && (login.trim().length() >= 3);
-
-        Function<String, Integer> trimmedLength =
-                text -> text.trim().length();
-
-        Consumer<String> printNormalized = text ->
-                System.out.println("NORMALIZED: " + text.trim().toLowerCase(Locale.ROOT));
+        List<Integer> numbers = List.of(-2, 0, 3, 5, -1, 3);
+        List<Integer> result = numbers.stream()
+                .filter(number -> number > 0)
+                .map(number -> number * 2)
+                .toList();
 
 
-        printNormalized.accept("   JAVA   ");
-        printNormalized.accept(" Backend ");
-
-
+        System.out.println(result);
+        System.out.println(numbers);
     }
+
 
 
 }
