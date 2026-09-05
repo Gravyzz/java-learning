@@ -1,26 +1,25 @@
 package repetition.functional;
 
 import java.util.Locale;
+import java.util.function.*;
 
 public class Main {
     public static void main(String[] args) {
 
-        TextFormatter upper = text -> text.trim().toUpperCase(Locale.ROOT);
-        TextFormatter brackets = text -> {
-                return  "[" + text + "]";
-        };
-        TextFormatter exclamation = text -> text + "!";
+        Predicate<String> validLogin = login -> (login != null) && (login.trim().length() >= 3);
 
-        System.out.println(applyFormatter("  java  ", upper));
-        System.out.println(applyFormatter("java", brackets));
-        System.out.println(applyFormatter("java", exclamation));
+        Function<String, Integer> trimmedLength =
+                text -> text.trim().length();
+
+        Consumer<String> printNormalized = text ->
+                System.out.println("NORMALIZED: " + text.trim().toLowerCase(Locale.ROOT));
+
+
+        printNormalized.accept("   JAVA   ");
+        printNormalized.accept(" Backend ");
+
 
     }
 
-    static String applyFormatter(
-            String text,
-            TextFormatter formatter
-    ){
-        return formatter.format(text);
-    }
+
 }
