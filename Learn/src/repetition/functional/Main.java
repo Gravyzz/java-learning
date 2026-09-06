@@ -1,6 +1,6 @@
 package repetition.functional;
 
-import java.util.Locale;
+import java.util.List;
 import java.util.Optional;
 
 
@@ -8,18 +8,22 @@ import java.util.Optional;
 public class Main {
     public static void main(String[] args) {
 
-        System.out.println(normalizeLogin("  ZAKHAR  ").orElse("guest"));
-        System.out.println(normalizeLogin("   ").orElse("guest"));
-        System.out.println(normalizeLogin(null).orElse("guest"));
-        System.out.println(normalizeLogin("").orElse("guest"));
+        System.out.println(
+                findFirstLongWord(List.of("go", "java", "spring"))
+                        .orElse("not found")
+        );
+        System.out.println(findFirstLongWord(List.of("a", "sql")).orElse("not found"));
+        System.out.println(findFirstLongWord(List.of()).orElse("not found"));
 
     }
 
-    static Optional<String> normalizeLogin(String login){
-        if (login == null) return Optional.empty();
-        String normalized = login.trim();
-        if (normalized.isEmpty()) return Optional.empty();
-        return Optional.of(normalized.toLowerCase(Locale.ROOT));
-    }
+    static Optional<String> findFirstLongWord(List<String> words){
+        return words.stream()
+                .filter(word -> word.length()>=4)
+                .findFirst();
+
+        }
+
+
 
 }
