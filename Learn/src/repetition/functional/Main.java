@@ -1,31 +1,37 @@
 package repetition.functional;
 
-import java.util.List;
-import java.util.Locale;
-import java.util.function.*;
-import java.util.stream.*;
+import java.util.Set;
+import java.util.HashSet;
+
+
 
 public class Main {
     public static void main(String[] args) {
 
-        List<Integer> numbers = List.of(1, 2, 3);
 
-        Stream<Integer> stream = numbers.stream()
-                .filter(number -> {
-                    System.out.println("filter " + number);
-                    return number >= 2;
-                })
-                .map(number -> {
-                    System.out.println("map " + number);
-                    return number * 10;
-                });
 
-        System.out.println("before");
 
-        List<Integer> result = stream.toList();
+        System.out.println(hasDuplicatesWithSet(new int[]{3, 7, 3}));
+        System.out.println(hasDuplicatesWithSet(new int[]{3, 7, 9}));
+        System.out.println(hasDuplicatesWithSet(new int[]{4}));
+        System.out.println(hasDuplicatesWithSet(new int[]{}));
 
-        System.out.println(result);
+
 
 
     }
+
+
+    static boolean hasDuplicatesWithSet(int[] numbers){
+        HashSet<Integer> seen = new HashSet<>();
+        for (int i = 0; i < numbers.length; i++) {
+            if (!(seen.add(numbers[i]))){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    
+
 }
